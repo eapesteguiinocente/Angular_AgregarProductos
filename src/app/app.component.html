@@ -1,5 +1,6 @@
 <div class="container mt-5">
-  <h1>Registro de Gastos</h1>
+  <h2>Registro de Gastos</h2>
+  <br>
   <div class="form-group">
     <label for="categoria">Categoría:</label>
     <select id="categoria" [(ngModel)]="selectedCategory" class="form-control">
@@ -11,19 +12,54 @@
   </div>
   <div class="form-group">
     <label for="monto">Monto:</label>
-    <input type="number" id="monto" [(ngModel)]="monto" class="form-control">
+    <input type="number" min="0" id="monto" [(ngModel)]="monto" class="form-control">
   </div>
   <br>
   <button (click)="agregarGasto()" class="btn btn-primary">Agregar Gasto</button>
-  <!-- <span [(ngModel)]="totalGastos"></span> -->
-  <input type="text" class="form-control" [(ngModel)]="totalGastos" readonly="true" style="background-color: white">
   <br><br>
-  <div [ngClass]="{'alert alert-danger': totalGastos > 3000, 'alert alert-success': totalGastos <= 3000}">
-    <p *ngIf="totalGastos > 3000">¡Deberías considerar aumentar tus ingresos!</p>
-    <p *ngIf="totalGastos <= 3000">¡Sigue así, mantén el buen trabajo financiero!</p>
+  <table class="table">
+    <thead class="table-dark">
+      <tr style="text-align: center;">
+        <th>Comida</th>
+        <th>Estudios</th>
+        <th>Transportes</th>
+        <th>Ocio</th>
+        <th>Total de Gastos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="text-align: center;">
+        <td>S/{{gastos['comida']}}</td>
+        <td>S/{{gastos['estudios']}}</td>
+        <td>S/{{gastos['transporte']}}</td>
+        <td>S/{{gastos['ocio']}}</td>
+        <td>S/{{totalGastos}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <!-- <hr> -->
+  <div *ngIf="totalGastos > 3000">
+    <div class="alert alert-warning">
+      ¡Deberías aumentar tus ingresos!
+    </div>
+    <br>
+    <ul>
+      <li *ngFor="let consejo of consejosClave">{{ consejo }}</li>
+    </ul>
+    <img width="300px" height="400px"
+      [src]="'https://finanzasdecasa.files.wordpress.com/2018/11/habitos_financieros2.jpg'" alt="Imagen ilustrativa"
+      class="img-fluid">
   </div>
-  <ul>
-    <li *ngFor="let consejo of consejos">{{ consejo }}</li>
-  </ul>
-  <img width="300px" height="400px" [src]="totalGastos > 3000 ? 'https://www.renomind.com/wp-content/webp-express/webp-images/uploads/2023/05/frases-de-motivacion-1536x1536.jpg.webp' : 'https://www.renomind.com/wp-content/webp-express/webp-images/uploads/2023/05/frases-de-motivacion-1536x1536.jpg.webp'" alt="Imagen ilustrativa" class="img-fluid">
+  <div *ngIf="totalGastos <= 3000 && totalGastos > 0">
+    <div class="alert alert-success">
+      ¡Sigue así, mantén esos gastos a raya!
+    </div>
+    <ul>
+      <li *ngFor="let mensaje of mensajesMotivacionales">{{ mensaje }}</li>
+    </ul>
+    <img width="300px" height="400px"
+      [src]="'https://www.renomind.com/wp-content/webp-express/webp-images/uploads/2023/05/frases-de-motivacion-1536x1536.jpg.webp'"
+      alt="Imagen ilustrativa" class="img-fluid">
+  </div>
 </div>
