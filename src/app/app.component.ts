@@ -6,34 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'examen';
-  selectedCategory = 'comida';
-  monto: number = 0;
-  gastos: { [key: string]: number } = {
-    comida: 0,
-    estudios: 0,
-    transporte: 0,
-    ocio: 0
-  };
-  totalGastos = 0;
-  consejosClave = [
-    'Evita las compras por impulso. ¡No seas impulsivo!',
-    'Detalla todos tus gastos mensuales. ¡Que no se te escape nada!',
-    'Evita los llamados gastos hormiga. ¡No necesitas Spotify para vivir!'
-  ];
-  mensajesMotivacionales = [
-    '¡Cada dia el sueño del departamento esta más cerca!',
-    'Ya lo dijo Julio Velarde: ¡Ahorro es progreso!',
-    '¡El que la sigue, la consige!'
+  personas = [
+    { nombre: 'Edlu', edad: 28 },
+    { nombre: 'Diana', edad: 31 },
+    { nombre: 'Santiago', edad: 18 },
+    { nombre: 'Fabricio', edad: 30 },
+    { nombre: 'Mauricio', edad: 13 },
+    { nombre: 'Martin', edad: 28 },
+    { nombre: 'Luchy', edad: 15 },
+    { nombre: 'Sebas', edad: 21 },
+    { nombre: 'Fio', edad: 30 },
+    { nombre: 'Ariana', edad: 5 }
   ];
 
-  agregarGasto() {
-    if (this.monto <= 0) {
-      alert('¡Profe! ¡Eso no se hace! No se debe ingresar S/0 o negativo');
-    } else {
-      this.gastos[this.selectedCategory] += this.monto;
-      this.totalGastos = this.gastos['comida'] + this.gastos['estudios'] + this.gastos['transporte'] + this.gastos['ocio'];
-      alert('Se ha registrado el nuevo gasto en la categoría: ' + this.selectedCategory );
-    }   
+  getClass(edad:number) {
+    if (edad < 18) {
+      return 'menor-edad';
+    }else if(edad >= 18 && edad <= 30 ){
+      return 'adulto-joven';
+    }else{
+      return 'adulto';
+    }
   }
+
 }
