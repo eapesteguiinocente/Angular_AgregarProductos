@@ -6,27 +6,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  personas = [
-    { nombre: 'Edlu', edad: 28 },
-    { nombre: 'Diana', edad: 31 },
-    { nombre: 'Santiago', edad: 18 },
-    { nombre: 'Fabricio', edad: 30 },
-    { nombre: 'Mauricio', edad: 13 },
-    { nombre: 'Martin', edad: 28 },
-    { nombre: 'Luchy', edad: 15 },
-    { nombre: 'Sebas', edad: 21 },
-    { nombre: 'Fio', edad: 30 },
-    { nombre: 'Ariana', edad: 5 }
-  ];
-
-  getClass(edad:number) {
-    if (edad < 18) {
-      return 'menor-edad';
-    }else if(edad >= 18 && edad <= 30 ){
-      return 'adulto-joven';
-    }else{
-      return 'adulto';
+  paises = [
+    {
+      "nombre": "Brasil",
+      "colores_bandera": ["yellow", "green"]
+    },
+    {
+      "nombre": "India",
+      "colores_bandera": ["white", "orange"]
+    },
+    {
+      "nombre": "China",
+      "colores_bandera": ["yellow", "red"]
+    },
+    {
+      "nombre": "Canadá",
+      "colores_bandera": ["white", "red"]
+    },
+    {
+      "nombre": "Australia",
+      "colores_bandera": ["white", "blue"]
+    },
+    {
+      "nombre": "Japón",
+      "colores_bandera": ["red", "white"]
+    },
+    {
+      "nombre": "Suecia",
+      "colores_bandera": ["yellow", "blue"]
+    },
+    {
+      "nombre": "Finlandia",
+      "colores_bandera": ["blue", "white"]
+    },
+    {
+      "nombre": "Noruega",
+      "colores_bandera": ["blue", "red"]
+    },
+    {
+      "nombre": "Turquía",
+      "colores_bandera": ["white", "red"]
     }
-  }
+  ]
 
+  getStyle(pais: string[]) {
+    return { "color": pais[0], "background-color": pais[1] }
+  }
 }
